@@ -1,0 +1,139 @@
+/* PostDetail 컨테이너 */
+.post-detail {
+    max-width: 900px; /* 컨텐츠 최대 너비 */
+    margin: 50px auto; /* 화면 중앙 정렬 */
+    padding: 20px;
+    background: linear-gradient(145deg, #ffffff, #f4f4f4); /* 부드러운 배경 그라데이션 */
+    border-radius: 16px; /* 둥근 모서리 */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 6px 6px rgba(0, 0, 0, 0.1); /* 입체감 있는 그림자 */
+    font-family: "Roboto", sans-serif;
+    color: #333;
+    transition: transform 0.3s;
+  }
+  
+  .post-detail:hover {
+    transform: translateY(-5px); /* 호버 시 약간의 이동 효과 */
+  }
+  
+  /* 제목 */
+  .post-detail h1 {
+    font-size: 32px; /* 제목 크기 */
+    color: #333; /* 강조된 색상 */
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* 텍스트 그림자 */
+  }
+  
+  /* 내용 */
+  .post-detail p {
+    font-size: 18px; /* 본문 텍스트 크기 */
+    line-height: 1.8; /* 줄 간격 */
+    color: #444; /* 부드러운 텍스트 색상 */
+    margin-bottom: 30px;
+    text-align: justify; /* 본문 양쪽 정렬 */
+    background: rgba(255, 255, 255, 0.6); /* 약간의 투명도 */
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1); /* 내부 그림자 */
+  }
+  
+  /* 메타 정보 */
+  .post-meta {
+    display: flex;
+    justify-content: space-between; /* 좌우 정렬 */
+    font-size: 14px;
+    color: #666; /* 흐린 텍스트 색상 */
+    margin-top: 20px;
+    border-top: 2px dashed #ddd; /* 구분선 스타일 변경 */
+    padding-top: 10px;
+  }
+  
+  .post-meta span {
+    background: #f9f9f9; /* 배경색 */
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #555;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1); /* 텍스트 그림자 */
+  }
+  
+  /* 반응형 디자인 */
+  @media (max-width: 768px) {
+    .post-detail {
+      padding: 15px;
+      margin: 20px;
+    }
+  
+    .post-detail h1 {
+      font-size: 26px;
+    }
+  
+    .post-detail p {
+      font-size: 16px;
+    }
+  
+    .post-meta {
+      flex-direction: column; /* 세로 정렬 */
+      align-items: flex-start;
+    }
+  
+    .post-meta span {
+      margin-bottom: 10px; /* 요소 간 간격 */
+    }
+  }
+
+ 
+  /** 버튼 디자인**/
+.post-detail__actions {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px; /* 버튼 간격 */
+    flex-wrap: wrap; /* 버튼이 화면 크기에 따라 줄 바꿈 가능 */
+    justify-content: center; /* 버튼 중앙 정렬 */
+  }
+  
+  /* 버튼 기본 스타일 */
+  .post-detail__button {
+    flex: 1 1 calc(50% - 10px); /* 버튼 너비를 50%로 설정 (간격 포함) */
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ccc; /* 기본 테두리 */
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    font-family: "Roboto", sans-serif;
+    font-weight: bold;
+    background-color: #f9f9f9; /* 기본 배경색 */
+    color: #333; /* 텍스트 색상 */
+  }
+  
+/* PostDetail.css */
+.loading-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* 화면 중앙 정렬을 위한 높이 */
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 6px solid #f3f3f3; /* 외부 원 */
+  border-top: 6px solid #3498db; /* 로테이션 컬러 */
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+  

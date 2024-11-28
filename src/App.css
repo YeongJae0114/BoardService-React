@@ -1,0 +1,19 @@
+#root {
+  width: 100%; /* 전체 화면 사용 */
+  max-width: none; /* 너비 제한 해제 */
+  margin: 0;
+  text-align: initial; /* 텍스트 정렬 초기화 */
+}
+
+li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #FFFFF0; /* 아이보리 배경색 */
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: #333;
+}

@@ -1,0 +1,59 @@
+/* 전역 박스 크기 설정: 모든 요소가 padding과 border를 포함 */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* 고정된 헤더 */
+.header {
+  position: fixed; /* 화면 상단에 고정 */
+  top: 0;
+  left: 0;
+  width: 100%; /* 화면 너비에 맞춤 */
+  display: flex;
+  justify-content: space-between; /* 요소를 양쪽 끝에 배치 */
+  align-items: center; /* 세로로 중앙 정렬 */
+  padding: 10px 20px; /* 좌우 여백 */
+  background-color: #282c34;
+  color: white;
+  z-index: 1000; /* 다른 요소 위에 표시 */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 약간의 그림자 */
+  overflow: hidden; /* 내용이 넘치지 않도록 설정 */
+}
+
+/* 헤더 내부 로고 */
+.header__logo a {
+  text-decoration: none;
+  color: #61dafb;
+  font-size: 1.5rem;
+  font-weight: bold;
+  white-space: nowrap; /* 로고가 줄바꿈되지 않도록 설정 */
+}
+
+/* 헤더 네비게이션 */
+.header__nav ul {
+  display: flex; /* 가로 정렬 */
+  list-style: none;
+  gap: 15px; /* 메뉴 간 간격 */
+  margin: 0;
+  padding: 0;
+  overflow-x: auto; /* 요소가 너무 많으면 스크롤 활성화 */
+}
+
+.header__nav a {
+  text-decoration: none;
+  color: white;
+  font-size: 1rem;
+  transition: color 0.3s;
+}
+
+.header__nav a:hover {
+  color: #61dafb;
+}
+
+/* 콘텐츠 아래로 밀기 */
+.main-content {
+  margin-top: 70px; /* 헤더 높이만큼 아래로 */
+  padding: 20px;
+}

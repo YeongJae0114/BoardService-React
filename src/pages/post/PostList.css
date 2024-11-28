@@ -1,0 +1,94 @@
+/* PostList 컨테이너 */
+.post-list {
+  width: 100%;
+  max-width: 1200px; /* 상자 너비를 넓게 설정 */
+  margin: 0 auto; /* 중앙 정렬 */
+  padding: 30px; /* 내부 여백 증가 */
+  background-color: #f9f9f9;
+  border-radius: 12px; /* 더 부드러운 모서리 */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* 그림자 강화 */
+  font-family: Arial, sans-serif;
+}
+
+.post-list h2 {
+  font-size: 28px; /* 제목 크기 증가 */
+  color: #333;
+  margin-bottom: 30px; /* 제목과 리스트 간의 간격 증가 */
+  text-align: center;
+}
+
+/* "No posts available" 메시지 */
+.post-list p {
+  font-size: 18px;
+  color: #777;
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* 게시글 리스트 */
+.post-list ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* 게시글 아이템 */
+.post-item {
+  background-color: #fff;
+  margin-bottom: 20px; /* 항목 간 간격 증가 */
+  padding: 25px; /* 내부 여백 증가 */
+  border: 1px solid #ddd;
+  border-radius: 10px; /* 카드 모양 */
+  transition: box-shadow 0.3s;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* 약간 더 두드러진 그림자 */
+}
+
+.post-item:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* 호버 시 그림자 강조 */
+}
+
+/* 게시글 제목 */
+.post-item h3 {
+  font-size: 22px; /* 제목 크기 증가 */
+  color: #333;
+  margin-bottom: 15px; /* 제목과 내용 간 간격 증가 */
+  font-weight: bold;
+}
+
+/* 게시글 메타 정보 */
+.post-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #555;
+  margin-top: 10px;
+}
+
+.post-meta span {
+  margin-right: 10px;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+  .post-list {
+    padding: 20px;
+  }
+
+  .post-item {
+    padding: 15px;
+  }
+
+  .post-item h3 {
+    font-size: 20px;
+  }
+
+  .post-meta {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .post-meta span {
+    margin-right: 0;
+    margin-top: 5px;
+  }
+}
