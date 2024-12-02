@@ -1,5 +1,5 @@
 import React from "react";
-import PostManager from "./post/PostManager"; // PostManager 컴포넌트
+import PostManager from "../post/PostManager"; // PostManager 컴포넌트
 import "./Home.css";
 
 const Home = () => {

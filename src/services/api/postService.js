@@ -26,7 +26,7 @@ export const fetchPostsByCursor = async (cursor) => {
         "Content-Type": "application/json",
         "ngrok-skip-browser-warning": "69420", // ngrok 경고 우회
       },
-    
+      credentials: "include",
     });
 
     // HTTP 응답 처리
@@ -73,6 +73,7 @@ export const fetchPostDetail = async (id) => {
         "Content-Type": "application/json",
         "ngrok-skip-browser-warning": "69420", // ngrok 경고 우회
       },
+      credentials: "include",
     });
 
     // HTTP 응답 처리

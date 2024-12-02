@@ -64,17 +64,7 @@ const CreatePost = () => {
             required
           ></textarea>
         </div>
-        <div className="create-post__field">
-          <label htmlFor="author">Author</label>
-          <input
-            type="text"
-            id="author"
-            value={author}
-            onChange={(e) => setAuthor(e.target.value)}
-            placeholder="Enter your name"
-            required
-          />
-        </div>
+
         <button type="submit" className="create-post__button">
           Create Post
         </button>
