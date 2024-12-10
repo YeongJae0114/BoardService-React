@@ -8,16 +8,16 @@ const API_BASE_URL = "https://purely-funky-ladybug.ngrok-free.app/api";
  */
 export const fetchPostsByCursor = async (cursor) => {
   try {
-    // 쿼리 문자열 생성
     const queryParams = new URLSearchParams();
 
-    // 커서가 존재하면 추가
-    if (cursor?.id && cursor?.createdDate) {
-      queryParams.append("cursorId", cursor.id.toString());
-      queryParams.append("createdDateCursor", cursor.createdDate);
+    // 커서 값이 있으면 쿼리 파라미터에 추가
+    if (cursor) {
+      queryParams.append("cursorId", cursor.id?.toString() || "");
+      queryParams.append("createdDateCursor", cursor.createdDate || "");
     }
 
     const url = `${API_BASE_URL}/posts/cursor?${queryParams.toString()}`;
+    console.log("Fetching URL:", url);
 
     // Fetch 요청
     const response = await fetch(url, {
@@ -29,32 +29,30 @@ export const fetchPostsByCursor = async (cursor) => {
       credentials: "include",
     });
 
-    // HTTP 응답 처리
+    // 응답 상태 코드 확인
     if (!response.ok) {
-      throw new Error(`Error fetching posts: ${response.status}`);
+      throw new Error(`Failed to fetch posts: ${response.status} ${response.statusText}`);
     }
 
-    // JSON 응답 처리
     const data = await response.json();
+    console.log("API Response:", data);
 
-    // 데이터 구조 확인
-    const { results, status } = data;
+    // 응답 구조에서 데이터 추출
+    const { postList = [], nextCursorId, nextCreatedDateCursor, hasNext } = data;
 
-    // 응답 상태 확인
-    if (status.code !== 2000) {
-      throw new Error(`Error: ${status.message}`);
+    // 응답 데이터 유효성 검사
+    if (!Array.isArray(postList)) {
+      throw new Error("Invalid response: postList is not an array.");
     }
 
-    // 결과 반환
-    return results[0]; // results 배열에서 첫 번째 요소 반환
+    return { postList, nextCursorId, nextCreatedDateCursor, hasNext };
   } catch (error) {
     console.error("[FetchPostsByCursor Error]", error.message);
-    throw error; // 호출부에서 에러 처리
+    throw error;
   }
-
-
-  
 };
+
+
 
 /**
  * Fetch detailed post by ID.
@@ -86,9 +84,6 @@ export const fetchPostDetail = async (id) => {
     // 응답 상태 확인
     const { results, status } = data;
 
-    if (status.code !== 2000) {
-      throw new Error(`Error: ${status.message}`);
-    }
 
     // results 배열에서 첫 번째 요소 반환
     if (results.length === 0) {

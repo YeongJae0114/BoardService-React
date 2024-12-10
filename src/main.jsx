@@ -6,8 +6,8 @@ import { AuthProvider } from './context/AuthContext'; // AuthProvider 추가
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <AuthProvider>
+
       <App />
-    </AuthProvider>
+
   </StrictMode>
 );

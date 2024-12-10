@@ -3,13 +3,25 @@ import { useNavigate } from "react-router-dom"; // 페이지 이동을 위한 us
 import { usePostManager } from "../../hooks/usePostManager";
 import PostList from "./PostList";
 import "./PostManager.css";
+import imageGif from "./img/image.gif";
+
 
 const PostManager = () => {
   const { posts, loading, hasMore, error, loadMorePosts } = usePostManager();
   const navigate = useNavigate(); // useNavigate 훅 추가
 
   if (error) {
-    return <div className="post-manager__error">Error: {error}</div>;
+    return (
+      <div className="post-manager__error">
+        <p>오류가 발생했습니다: {error}</p>
+        <button onClick={() => {
+          console.log("Retrying...");
+          loadMorePosts();
+        }}>
+          다시 시도
+        </button>
+      </div>
+    );
   }
 
   return (
@@ -17,7 +29,7 @@ const PostManager = () => {
       <div className="post-manager__header">
         {/* GIF 이미지 추가 */}
         <img
-          src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjiRCiwt-CsaJ5oZgsOh5xht2VVQvoa3686i_5iLX_srfbKk-p1uPCjDrOaJhVU0k7jbPoLywT4I0CH8UIbWI2iBlXawrumdYoYxbawrKgrKvDlrWklZmKKJdGbWVgqGhpq9o5_XNDk78U/s1600/image.gif"
+          src={imageGif} // 이미지 경로 추가
           alt="Header GIF"
           className="post-manager__gif"
         />
@@ -42,12 +54,21 @@ const PostManager = () => {
         </button>
       </div>
       <PostList posts={posts} /> {/* 게시글 리스트 */}
+      
       {loading && <div className="post-manager__loading">Loading...</div>} {/* 로딩 중 */}
+
       {!loading && hasMore && (
-        <button onClick={loadMorePosts} className="post-manager__button">
+        <button
+          onClick={() => {
+            console.log("Load More Clicked");
+            loadMorePosts(false); // 추가 요청
+          }}
+          className="post-manager__button"
+        >
           더 보기
         </button>
-      )} {/* 더 보기 버튼 */}
+      )}
+
       {!hasMore && <div className="post-manager__no-more">No more posts</div>} {/* 데이터 없음 표시 */}
     </div>
   );

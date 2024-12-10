@@ -19,13 +19,20 @@ const LoginForm = () => {
       const response = await loginUser({ email, password }); // API 요청
       console.log("로그인 성공:", response);
 
-      // AuthContext에 사용자 정보 저장
-      login(response.user);
+      if (response.data) {
+        // AuthContext에 사용자 정보 저장
+        login(response.data); // response.data를 Context에 저장
+        console.log("AuthContext에 사용자 저장 완료:", response.data);
 
-      // 로그인 성공 메시지 띄우고 홈 페이지로 이동
-      alert("로그인에 성공했습니다!");
-      navigate("/"); // Home 페이지로 이동
+        // 로그인 성공 메시지 띄우고 홈 페이지로 이동
+        alert("로그인에 성공했습니다!");
+        navigate("/"); // Home 페이지로 이동
+      } else {
+        setError("로그인 응답 데이터가 없습니다.");
+        console.error("로그인 응답 데이터가 없습니다.");
+      }
     } catch (err) {
+      console.error("Login Error:", err.message);
       // 에러 메시지 처리
       setError("로그인에 실패했습니다. 이메일과 비밀번호를 확인해주세요.");
     }

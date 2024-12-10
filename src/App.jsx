@@ -11,7 +11,7 @@ import SignupForm from './pages/login/SignupForm';
 
 const App = () => {
   return (
-//<AuthProvider>
+<AuthProvider>
       <Router>
         <Header />
         <Routes>
@@ -22,7 +22,7 @@ const App = () => {
           <Route path="/create-post" element={<CreatePost />} /> {/* 게시글 생성 페이지 */}
         </Routes>
       </Router>
-  //</AuthProvider>
+  </AuthProvider>
   );
 };
 

@@ -1,16 +1,20 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useAuth } from "../../context/AuthContext"; // AuthContext 사용
+import { useAuth } from "../../context/AuthContext";
 import "./Header.css";
 
 const Header = () => {
-  const { user, logout } = useAuth(); // 로그인 상태 및 로그아웃 함수
+  const { user, logout, loading } = useAuth();
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    logout(); // 로그아웃 함수 호출
-    navigate("/"); // 로그아웃 후 홈으로 이동
+    logout(); // 로그아웃
+    navigate("/"); // 홈으로 이동
   };
+
+  if (loading) {
+    return <div>Loading...</div>; // 로딩 상태 표시
+  }
 
   return (
     <header className="header">
@@ -24,9 +28,8 @@ const Header = () => {
           </li>
           {user ? (
             <>
-              {/* 로그인 상태일 때 */}
               <li>
-                <span className="header__username">안녕하세요, {user.username}님!</span>
+                <span className="header__username">안녕하세요, {user}님!</span>
               </li>
               <li>
                 <button onClick={handleLogout} className="header__logout-button">
@@ -36,7 +39,6 @@ const Header = () => {
             </>
           ) : (
             <>
-              {/* 비로그인 상태일 때 */}
               <li>
                 <Link to="/login">login</Link>
               </li>
